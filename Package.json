@@ -1,0 +1,22 @@
+{
+  "name": "loan-mortgage-engine",
+  "version": "1.0.0",
+  "description": "Pure logic loan and mortgage calculation API",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/loan-engine.ts",
+    "serve": "netlify dev"
+  },
+  "dependencies": {
+    "date-fns": "^4.4.0",
+    "lodash": "^4.18.1"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^2.0.0",
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}
