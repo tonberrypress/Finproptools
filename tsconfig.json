@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "ignoreDeprecations": "5"
+// "ignoreDeprecations": "5"
   },
   "include": ["src/**/*", "netlify/functions/**/*"],
   "exclude": ["node_modules", "dist"]
