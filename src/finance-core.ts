@@ -93,6 +93,25 @@ public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: 
   return round(tax, 2);
 }
 
+public rollingForecast(currentValue: number, growthRate: number, periods: number, scenario: 'base' | 'best' | 'worst' = 'base') {
+  const adjustedRate = scenario === 'best' ? growthRate * 1.2 : 
+                       scenario === 'worst' ? growthRate * 0.8 : growthRate;
+
+  const forecast = [];
+  let value = currentValue;
+
+  for (let i = 1; i <= periods; i++) {
+    value = value * (1 + adjustedRate);
+    forecast.push({
+      period: i,
+      projectedValue: round(value, 2),
+      growthApplied: round(adjustedRate * 100, 2)
+    });
+  }
+
+  return forecast;
+}
+
 
   // Future Value, Payback, etc. can be added here
 
