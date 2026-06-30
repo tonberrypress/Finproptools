@@ -106,6 +106,28 @@ public leaseEconomics(input: any) {
   };
 }
 
+public portfolioMetrics(properties: any[]) {
+  if (!properties || properties.length === 0) {
+    return { error: "No properties provided" };
+  }
+
+  const totalNOI = properties.reduce((sum, p) => sum + (p.noi || 0), 0);
+  const totalValue = properties.reduce((sum, p) => sum + (p.value || 0), 0);
+  const averageOccupancy = properties.reduce((sum, p) => sum + (p.occupancy || 0), 0) / properties.length;
+
+  const totalExpenseRatio = properties.reduce((sum, p) => {
+    return sum + (p.expenses ? p.expenses / (p.noi + p.expenses) : 0);
+  }, 0) / properties.length;
+
+  return {
+    totalNOI: round(totalNOI, 2),
+    totalPortfolioValue: round(totalValue, 2),
+    averageOccupancy: round(averageOccupancy * 100, 2),
+    averageExpenseRatio: round(totalExpenseRatio * 100, 2),
+    portfolioCapRate: totalValue > 0 ? round(totalNOI / totalValue, 4) : 0,
+    numberOfProperties: properties.length
+  };
+}
 
 }
 
