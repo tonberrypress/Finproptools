@@ -31,6 +31,22 @@ export class FinanceCore {
   }
 
   // Future Value, Payback, etc. can be added here
+// Add this to the existing FinanceCore class
+public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r: number, sigma: number): number {
+  const d1 = (Math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * Math.sqrt(T));
+  const d2 = d1 - sigma * Math.sqrt(T);
+
+  const normCDF = (x: number) => {
+    // Simple approximation
+    return 0.5 * (1 + Math.tanh(0.8 * x));
+  };
+
+  if (callPut === 'call') {
+    return round(S * normCDF(d1) - K * Math.exp(-r * T) * normCDF(d2), 2);
+  } else {
+    return round(K * Math.exp(-r * T) * normCDF(-d2) - S * normCDF(-d1), 2);
+  }
+}
 }
 
 export default new FinanceCore();
