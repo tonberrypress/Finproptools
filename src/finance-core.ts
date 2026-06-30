@@ -65,6 +65,35 @@ public analyzeFinancials(income: any, balance: any) {
   };
 }
 
+public straightLineDepreciation(cost: number, salvage: number, usefulLife: number, year: number): number {
+  const annualDep = (cost - salvage) / usefulLife;
+  return round(annualDep, 2);
+}
+
+public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: number}> = [] ): number {
+  // Default progressive brackets (US-style example - customizable)
+  const defaultBrackets = [
+    { min: 0, rate: 0.10 },
+    { min: 11000, rate: 0.12 },
+    { min: 44725, rate: 0.22 },
+    { min: 95375, rate: 0.24 }
+  ];
+
+  const usedBrackets = brackets.length ? brackets : defaultBrackets;
+  let tax = 0;
+  let prev = 0;
+
+  for (const bracket of usedBrackets) {
+    if (taxableIncome > bracket.min) {
+      const taxableInBracket = Math.min(taxableIncome, bracket.min + 1000000) - prev; // simplified
+      tax += taxableInBracket * bracket.rate;
+      prev = bracket.min;
+    }
+  }
+  return round(tax, 2);
+}
+
+
   // Future Value, Payback, etc. can be added here
 
 }
