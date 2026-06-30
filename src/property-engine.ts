@@ -59,6 +59,28 @@ public calculateRealEstateReturn(input: any) {
   };
 }
 
+public developmentFeasibility(input: any) {
+  const { landCost, constructionCost, totalUnits, pricePerUnit, holdingPeriod = 2, softCostsPercent = 0.15 } = input;
+
+  const totalHardCost = constructionCost;
+  const softCosts = totalHardCost * softCostsPercent;
+  const totalCost = landCost + totalHardCost + softCosts;
+
+  const totalRevenue = totalUnits * pricePerUnit;
+  const profit = totalRevenue - totalCost;
+  const margin = totalRevenue > 0 ? round(profit / totalRevenue * 100, 2) : 0;
+  const yieldOnCost = totalCost > 0 ? round(totalRevenue / totalCost, 2) : 0;
+
+  return {
+    totalDevelopmentCost: round(totalCost, 2),
+    totalProjectedRevenue: round(totalRevenue, 2),
+    grossProfit: round(profit, 2),
+    profitMarginPercent: margin,
+    yieldOnCost,
+    recommendation: margin > 20 ? "Feasible - Strong" : margin > 10 ? "Feasible" : "High Risk"
+  };
+}
+
 
 }
 
