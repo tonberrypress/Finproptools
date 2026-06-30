@@ -47,6 +47,24 @@ public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r:
     return round(K * Math.exp(-r * T) * normCDF(-d2) - S * normCDF(-d1), 2);
   }
 }
+
+public analyzeFinancials(income: any, balance: any) {
+  const revenue = income.revenue || 0;
+  const netIncome = income.netIncome || 0;
+  const assets = balance.assets || 0;
+  const equity = balance.equity || 0;
+  const liabilities = balance.liabilities || 0;
+
+  return {
+    grossMargin: revenue > 0 ? round((revenue - (income.cogs || 0)) / revenue * 100, 2) : 0,
+    netProfitMargin: revenue > 0 ? round(netIncome / revenue * 100, 2) : 0,
+    roe: equity > 0 ? round(netIncome / equity * 100, 2) : 0, // Return on Equity
+    currentRatio: balance.currentAssets && balance.currentLiabilities ? 
+      round(balance.currentAssets / balance.currentLiabilities, 2) : null,
+    debtToEquity: equity > 0 ? round(liabilities / equity, 2) : null
+  };
+}
+
   // Future Value, Payback, etc. can be added here
 
 }
