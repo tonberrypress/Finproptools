@@ -30,9 +30,6 @@ export class FinanceCore {
     return round(rate * 100, 2);
   }
 
-  // Future Value, Payback, etc. can be added here
-
-}
 // Add this to the existing FinanceCore class
 
 public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r: number, sigma: number): number {
@@ -50,4 +47,8 @@ public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r:
     return round(K * Math.exp(-r * T) * normCDF(-d2) - S * normCDF(-d1), 2);
   }
 }
+  // Future Value, Payback, etc. can be added here
+
+}
+
 export default new FinanceCore();
