@@ -8,6 +8,7 @@ export interface LoanInput {
   startDate?: string;
   extraPayment?: number;
   paymentFrequency?: 'monthly' | 'biweekly';
+  interestOnlyPeriods?: number; // For complex loans
 }
 
 export interface AmortizationRow {
@@ -31,7 +32,7 @@ export interface LoanSummary {
   totalExtraPaid: number;
   amortizationSchedule: AmortizationRow[];
 }
-
+  
 export class LoanEngine {
   private calculateMonthlyRate(annualRate: number): number {
     return annualRate / 12;
