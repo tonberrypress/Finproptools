@@ -81,6 +81,31 @@ public developmentFeasibility(input: any) {
   };
 }
 
+public leaseEconomics(input: any) {
+  const { monthlyRent, termMonths, escalationRate = 0.03, tenantImprovements = 0, commissions = 0 } = input;
+
+  let totalRent = 0;
+  let currentRent = monthlyRent;
+
+  for (let month = 1; month <= termMonths; month++) {
+    totalRent += currentRent;
+    if (month % 12 === 0) {
+      currentRent *= (1 + escalationRate);
+    }
+  }
+
+  const totalCosts = tenantImprovements + commissions;
+  const effectiveRent = totalRent - totalCosts;
+
+  return {
+    totalContractRent: round(totalRent, 2),
+    totalCosts: round(totalCosts, 2),
+    effectiveRentOverTerm: round(effectiveRent, 2),
+    averageMonthlyEffectiveRent: round(effectiveRent / termMonths, 2),
+    npv: round(effectiveRent * 0.9, 2) // Simplified NPV
+  };
+}
+
 
 }
 
