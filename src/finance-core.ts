@@ -10,8 +10,8 @@ export class FinanceCore {
   // Net Present Value
   public calculateNPV(rate: number, cashFlows: CashFlow[]): number {
     validateInput({ rate, cashFlows }, {
-  rate: { required: true },
-  cashFlows: { required: true }
+    rate: { required: true },
+    cashFlows: { required: true }
 });
     let npv = 0;
     for (const cf of cashFlows) {
@@ -23,7 +23,7 @@ export class FinanceCore {
   // Internal Rate of Return (simple approximation)
   public calculateIRR(cashFlows: number[]): number {
     validateInput({ cashFlows }, {
-  cashFlows: { required: true }
+    cashFlows: { required: true }
 });
     // Basic implementation - can be improved with better solver
     let rate = 0.1;
@@ -42,11 +42,11 @@ export class FinanceCore {
 
   public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r: number, sigma: number): number {
     validateInput({ S, K, T, r, sigma }, {
-  S: { required: true, positive: true },
-  K: { required: true, positive: true },
-  T: { required: true, positive: true },
-  r: { required: true },
-  sigma: { required: true, positive: true }
+    S: { required: true, positive: true },
+    K: { required: true, positive: true },
+    T: { required: true, positive: true },
+    r: { required: true },
+    sigma: { required: true, positive: true }
 });
   const d1 = (Math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * Math.sqrt(T));
   const d2 = d1 - sigma * Math.sqrt(T);
@@ -65,8 +65,8 @@ export class FinanceCore {
 
   public analyzeFinancials(income: any, balance: any) {
     validateInput({ income, balance }, {
-  income: { required: true },
-  balance: { required: true }
+    income: { required: true },
+    balance: { required: true }
 });
   const revenue = income.revenue || 0;
   const netIncome = income.netIncome || 0;
@@ -97,7 +97,7 @@ export class FinanceCore {
 
   public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: number}> = [] ): number {
     validateInput({ taxableIncome }, {
-  taxableIncome: { required: true }
+    taxableIncome: { required: true }
 });
   // Default progressive brackets (US-style example - customizable)
   const defaultBrackets = [
@@ -123,9 +123,9 @@ export class FinanceCore {
 
   public rollingForecast(currentValue: number, growthRate: number, periods: number, scenario: 'base' | 'best' | 'worst' = 'base') {
     validateInput({ currentValue, growthRate, periods }, {
-  currentValue: { required: true },
-  growthRate: { required: true },
-  periods: { required: true, positive: true }
+    currentValue: { required: true },
+    growthRate: { required: true },
+    periods: { required: true, positive: true }
 });
   const adjustedRate = scenario === 'best' ? growthRate * 1.2 : 
                        scenario === 'worst' ? growthRate * 0.8 : growthRate;
