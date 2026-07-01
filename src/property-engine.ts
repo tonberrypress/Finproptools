@@ -35,6 +35,11 @@ export class PropertyEngine {
   }
 
 public calculateRealEstateReturn(input: any) {
+validateInput(input, {
+  purchasePrice: { required: true, positive: true },
+  holdingPeriod: { required: true, positive: true },
+  annualNOI: { required: true, positive: true }
+});
   const { purchasePrice, holdingPeriod, annualNOI, growthRate = 0.03, exitCapRate = 0.07, loanAmount = 0 } = input;
 
   let equity = purchasePrice - loanAmount;
@@ -60,6 +65,12 @@ public calculateRealEstateReturn(input: any) {
 }
 
 public developmentFeasibility(input: any) {
+validateInput(input, {
+  landCost: { required: true, positive: true },
+  constructionCost: { required: true, positive: true },
+  totalUnits: { required: true, positive: true },
+  pricePerUnit: { required: true, positive: true }
+});
   const { landCost, constructionCost, totalUnits, pricePerUnit, holdingPeriod = 2, softCostsPercent = 0.15 } = input;
 
   const totalHardCost = constructionCost;
@@ -82,6 +93,10 @@ public developmentFeasibility(input: any) {
 }
 
 public leaseEconomics(input: any) {
+validateInput(input, {
+  monthlyRent: { required: true, positive: true },
+  termMonths: { required: true, positive: true }
+});
   const { monthlyRent, termMonths, escalationRate = 0.03, tenantImprovements = 0, commissions = 0 } = input;
 
   let totalRent = 0;
