@@ -45,15 +45,21 @@ export class LoanEngine {
     return principal * (monthlyRate * x) / (x - 1);
   }
 
-  public calculateLoan(input: LoanInput): LoanSummary {
-    const {
-      principal,
-      annualInterestRate,
-      termMonths,
-      startDate = new Date().toISOString(),
-      extraPayment = 0,
-      paymentFrequency = 'monthly'
-    } = input;
+public calculateLoan(input: LoanInput): LoanSummary {
+  validateInput(input, {
+    principal: { required: true, positive: true },
+    termMonths: { required: true, positive: true },
+    annualInterestRate: { required: true }
+  });
+
+  const {
+    principal,
+    annualInterestRate,
+    termMonths,
+    startDate = new Date().toISOString(),
+    extraPayment = 0,
+    paymentFrequency = 'monthly'
+  } = input;
 
 
     const monthlyRate = this.calculateMonthlyRate(annualInterestRate);
