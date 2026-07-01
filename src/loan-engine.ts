@@ -51,7 +51,7 @@ export class LoanEngine {
     termMonths: { required: true, positive: true },
     annualInterestRate: { required: true }
   });
-  const {
+    const {
     principal,
     annualInterestRate,
     termMonths,
