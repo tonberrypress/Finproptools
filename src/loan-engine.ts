@@ -46,7 +46,7 @@ export class LoanEngine {
   }
 
   public calculateLoan(input: LoanInput): LoanSummary {
-  validateInput(input, {
+    validateInput(input, {
     principal: { required: true, positive: true },
     termMonths: { required: true, positive: true },
     annualInterestRate: { required: true }
