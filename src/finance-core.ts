@@ -9,7 +9,7 @@ export interface CashFlow {
 export class FinanceCore {
   // Net Present Value
   public calculateNPV(rate: number, cashFlows: CashFlow[]): number {
-validateInput({ rate, cashFlows }, {
+ validateInput({ rate, cashFlows }, {
   rate: { required: true },
   cashFlows: { required: true }
 });
@@ -22,7 +22,7 @@ validateInput({ rate, cashFlows }, {
 
   // Internal Rate of Return (simple approximation)
   public calculateIRR(cashFlows: number[]): number {
-validateInput({ cashFlows }, {
+ validateInput({ cashFlows }, {
   cashFlows: { required: true }
 });
     // Basic implementation - can be improved with better solver
@@ -41,7 +41,7 @@ validateInput({ cashFlows }, {
 // Add this to the existing FinanceCore class
 
 public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r: number, sigma: number): number {
-validateInput({ S, K, T, r, sigma }, {
+ validateInput({ S, K, T, r, sigma }, {
   S: { required: true, positive: true },
   K: { required: true, positive: true },
   T: { required: true, positive: true },
@@ -90,7 +90,7 @@ public straightLineDepreciation(cost: number, salvage: number, usefulLife: numbe
 }
 
 public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: number}> = [] ): number {
-validateInput({ taxableIncome }, {
+ validateInput({ taxableIncome }, {
   taxableIncome: { required: true }
 });
   // Default progressive brackets (US-style example - customizable)
@@ -116,7 +116,7 @@ validateInput({ taxableIncome }, {
 }
 
 public rollingForecast(currentValue: number, growthRate: number, periods: number, scenario: 'base' | 'best' | 'worst' = 'base') {
-validateInput({ currentValue, growthRate, periods }, {
+ validateInput({ currentValue, growthRate, periods }, {
   currentValue: { required: true },
   growthRate: { required: true },
   periods: { required: true, positive: true }
