@@ -15,6 +15,10 @@ export class PropertyEngine {
   }
 
   public dcfValuation(input: PropertyInput): any {
+validateInput(input, {
+  noi: { required: true, positive: true },
+  holdingPeriod: { required: true, positive: true }
+});
     const { noi, growthRate = 0.03, holdingPeriod, exitCapRate = 0.07 } = input;
     let currentNOI = noi;
     let totalCF = 0;
