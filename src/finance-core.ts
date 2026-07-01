@@ -94,6 +94,11 @@ public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: 
 }
 
 public rollingForecast(currentValue: number, growthRate: number, periods: number, scenario: 'base' | 'best' | 'worst' = 'base') {
+validateInput({ currentValue, growthRate, periods }, {
+  currentValue: { required: true },
+  growthRate: { required: true },
+  periods: { required: true, positive: true }
+});
   const adjustedRate = scenario === 'best' ? growthRate * 1.2 : 
                        scenario === 'worst' ? growthRate * 0.8 : growthRate;
 
