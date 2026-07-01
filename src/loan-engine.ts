@@ -58,7 +58,7 @@ export class LoanEngine {
       startDate = new Date().toISOString(),
       extraPayment = 0,
       paymentFrequency = 'monthly'
-  } = input;
+    } = input;
 
 
     const monthlyRate = this.calculateMonthlyRate(annualInterestRate);
