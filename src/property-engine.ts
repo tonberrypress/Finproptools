@@ -20,7 +20,7 @@ export class PropertyEngine {
   }
 
   public dcfValuation(input: PropertyInput): any {
- validateInput(input, {
+     validateInput(input, {
   noi: { required: true, positive: true },
   holdingPeriod: { required: true, positive: true }
 });
@@ -43,8 +43,8 @@ export class PropertyEngine {
     };
   }
 
-public calculateRealEstateReturn(input: any) {
- validateInput(input, {
+  public calculateRealEstateReturn(input: any) {
+    validateInput(input, {
   purchasePrice: { required: true, positive: true },
   holdingPeriod: { required: true, positive: true },
   annualNOI: { required: true, positive: true }
@@ -73,8 +73,8 @@ public calculateRealEstateReturn(input: any) {
   };
 }
 
-public developmentFeasibility(input: any) {
- validateInput(input, {
+  public developmentFeasibility(input: any) {
+    validateInput(input, {
   landCost: { required: true, positive: true },
   constructionCost: { required: true, positive: true },
   totalUnits: { required: true, positive: true },
@@ -101,8 +101,8 @@ public developmentFeasibility(input: any) {
   };
 }
 
-public leaseEconomics(input: any) {
- validateInput(input, {
+  public leaseEconomics(input: any) {
+    validateInput(input, {
   monthlyRent: { required: true, positive: true },
   termMonths: { required: true, positive: true }
 });
@@ -130,8 +130,8 @@ public leaseEconomics(input: any) {
   };
 }
 
-public portfolioMetrics(properties: any[]) {
- validateInput({ properties }, {
+  public portfolioMetrics(properties: any[]) {
+    validateInput({ properties }, {
   properties: { required: true }
 });
   if (!properties || properties.length === 0) {
