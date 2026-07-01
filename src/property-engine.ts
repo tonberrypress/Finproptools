@@ -1,3 +1,4 @@
+import { validateInput } from './validator';
 import { round } from 'lodash';
 
 export interface PropertyInput {
@@ -11,6 +12,10 @@ export interface PropertyInput {
 
 export class PropertyEngine {
   public incomeApproachValuation(noi: number, capRate: number): number {
+validateInput({ noi, capRate }, {
+  noi: { required: true, positive: true },
+  capRate: { required: true, positive: true }
+});
     return round(noi / capRate, 2);
   }
 
