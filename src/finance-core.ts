@@ -85,6 +85,12 @@ export class FinanceCore {
 }
 
   public straightLineDepreciation(cost: number, salvage: number, usefulLife: number, year: number): number {
+    validateInput({ cost, salvage, usefulLife, year }, {
+     cost: { required: true, positive: true },
+     salvage: { required: true },
+     usefulLife: { required: true, positive: true },
+     year: { required: true, positive: true }
+   });
   const annualDep = (cost - salvage) / usefulLife;
   return round(annualDep, 2);
 }
