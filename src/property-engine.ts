@@ -15,7 +15,7 @@ export class PropertyEngine {
     validateInput({ noi, capRate }, {
       noi: { required: true, positive: true },
       capRate: { required: true, positive: true }
-  });
+    });
     return round(noi / capRate, 2);
   }
 
@@ -23,7 +23,7 @@ export class PropertyEngine {
     validateInput(input, {
       noi: { required: true, positive: true },
       holdingPeriod: { required: true, positive: true }
-  });
+    });
     const { noi, growthRate = 0.03, holdingPeriod, exitCapRate = 0.07 } = input;
     let currentNOI = noi;
     let totalCF = 0;
@@ -48,7 +48,7 @@ export class PropertyEngine {
       purchasePrice: { required: true, positive: true },
       holdingPeriod: { required: true, positive: true },
       annualNOI: { required: true, positive: true }
-  });
+    });
   const { purchasePrice, holdingPeriod, annualNOI, growthRate = 0.03, exitCapRate = 0.07, loanAmount = 0 } = input;
 
   let equity = purchasePrice - loanAmount;
@@ -79,7 +79,7 @@ export class PropertyEngine {
       constructionCost: { required: true, positive: true },
       totalUnits: { required: true, positive: true },
       pricePerUnit: { required: true, positive: true }
-  });
+    });
   const { landCost, constructionCost, totalUnits, pricePerUnit, holdingPeriod = 2, softCostsPercent = 0.15 } = input;
 
   const totalHardCost = constructionCost;
@@ -105,7 +105,7 @@ export class PropertyEngine {
     validateInput(input, {
       monthlyRent: { required: true, positive: true },
       termMonths: { required: true, positive: true }
-  });
+    });
   const { monthlyRent, termMonths, escalationRate = 0.03, tenantImprovements = 0, commissions = 0 } = input;
 
   let totalRent = 0;
@@ -133,7 +133,7 @@ export class PropertyEngine {
   public portfolioMetrics(properties: any[]) {
     validateInput({ properties }, {
       properties: { required: true }
-  });
+    });
   if (!properties || properties.length === 0) {
     return { error: "No properties provided" };
   }
