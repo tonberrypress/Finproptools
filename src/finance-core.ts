@@ -9,7 +9,7 @@ export interface CashFlow {
 export class FinanceCore {
   // Net Present Value
   public calculateNPV(rate: number, cashFlows: CashFlow[]): number {
- validateInput({ rate, cashFlows }, {
+    validateInput({ rate, cashFlows }, {
   rate: { required: true },
   cashFlows: { required: true }
 });
