@@ -63,8 +63,8 @@ export class FinanceCore {
   }
 }
 
-public analyzeFinancials(income: any, balance: any) {
-validateInput({ income, balance }, {
+  public analyzeFinancials(income: any, balance: any) {
+    validateInput({ income, balance }, {
   income: { required: true },
   balance: { required: true }
 });
@@ -84,13 +84,13 @@ validateInput({ income, balance }, {
   };
 }
 
-public straightLineDepreciation(cost: number, salvage: number, usefulLife: number, year: number): number {
+  public straightLineDepreciation(cost: number, salvage: number, usefulLife: number, year: number): number {
   const annualDep = (cost - salvage) / usefulLife;
   return round(annualDep, 2);
 }
 
-public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: number}> = [] ): number {
- validateInput({ taxableIncome }, {
+  public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: number}> = [] ): number {
+    validateInput({ taxableIncome }, {
   taxableIncome: { required: true }
 });
   // Default progressive brackets (US-style example - customizable)
@@ -115,8 +115,8 @@ public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: 
   return round(tax, 2);
 }
 
-public rollingForecast(currentValue: number, growthRate: number, periods: number, scenario: 'base' | 'best' | 'worst' = 'base') {
- validateInput({ currentValue, growthRate, periods }, {
+  public rollingForecast(currentValue: number, growthRate: number, periods: number, scenario: 'base' | 'best' | 'worst' = 'base') {
+    validateInput({ currentValue, growthRate, periods }, {
   currentValue: { required: true },
   growthRate: { required: true },
   periods: { required: true, positive: true }
