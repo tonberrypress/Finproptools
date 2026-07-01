@@ -1,3 +1,4 @@
+import { validateInput } from './validator';
 import { addMonths, format } from 'date-fns';
 import { round } from 'lodash';
 
@@ -29,7 +30,7 @@ export interface LoanSummary {
   totalPayments: number;
   totalInterest: number;
   payoffDate: string;
-  totalExtraPaid: number;
+  totalExtraPaid: number; to 
   amortizationSchedule: AmortizationRow[];
 }
   
@@ -54,9 +55,6 @@ export class LoanEngine {
       paymentFrequency = 'monthly'
     } = input;
 
-    if (principal <= 0 || termMonths <= 0) {
-      throw new Error('Principal and term must be positive');
-    }
 
     const monthlyRate = this.calculateMonthlyRate(annualInterestRate);
     let scheduledPayment = this.calculateMonthlyPayment(principal, monthlyRate, termMonths);
