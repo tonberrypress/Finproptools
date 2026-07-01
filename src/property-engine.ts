@@ -13,16 +13,16 @@ export interface PropertyInput {
 export class PropertyEngine {
   public incomeApproachValuation(noi: number, capRate: number): number {
     validateInput({ noi, capRate }, {
-    noi: { required: true, positive: true },
-    capRate: { required: true, positive: true }
+      noi: { required: true, positive: true },
+      capRate: { required: true, positive: true }
 });
     return round(noi / capRate, 2);
   }
 
   public dcfValuation(input: PropertyInput): any {
-     validateInput(input, {
-     noi: { required: true, positive: true },
-     holdingPeriod: { required: true, positive: true }
+    validateInput(input, {
+      noi: { required: true, positive: true },
+      holdingPeriod: { required: true, positive: true }
 });
     const { noi, growthRate = 0.03, holdingPeriod, exitCapRate = 0.07 } = input;
     let currentNOI = noi;
@@ -45,9 +45,9 @@ export class PropertyEngine {
 
   public calculateRealEstateReturn(input: any) {
     validateInput(input, {
-    purchasePrice: { required: true, positive: true },
-    holdingPeriod: { required: true, positive: true },
-    annualNOI: { required: true, positive: true }
+      purchasePrice: { required: true, positive: true },
+      holdingPeriod: { required: true, positive: true },
+      annualNOI: { required: true, positive: true }
 });
   const { purchasePrice, holdingPeriod, annualNOI, growthRate = 0.03, exitCapRate = 0.07, loanAmount = 0 } = input;
 
@@ -75,10 +75,10 @@ export class PropertyEngine {
 
   public developmentFeasibility(input: any) {
     validateInput(input, {
-    landCost: { required: true, positive: true },
-    constructionCost: { required: true, positive: true },
-    totalUnits: { required: true, positive: true },
-    pricePerUnit: { required: true, positive: true }
+      landCost: { required: true, positive: true },
+      constructionCost: { required: true, positive: true },
+      totalUnits: { required: true, positive: true },
+      pricePerUnit: { required: true, positive: true }
 });
   const { landCost, constructionCost, totalUnits, pricePerUnit, holdingPeriod = 2, softCostsPercent = 0.15 } = input;
 
@@ -103,8 +103,8 @@ export class PropertyEngine {
 
   public leaseEconomics(input: any) {
     validateInput(input, {
-    monthlyRent: { required: true, positive: true },
-    termMonths: { required: true, positive: true }
+      monthlyRent: { required: true, positive: true },
+      termMonths: { required: true, positive: true }
 });
   const { monthlyRent, termMonths, escalationRate = 0.03, tenantImprovements = 0, commissions = 0 } = input;
 
@@ -132,7 +132,7 @@ export class PropertyEngine {
 
   public portfolioMetrics(properties: any[]) {
     validateInput({ properties }, {
-    properties: { required: true }
+      properties: { required: true }
 });
   if (!properties || properties.length === 0) {
     return { error: "No properties provided" };
