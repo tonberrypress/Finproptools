@@ -33,6 +33,13 @@ export class FinanceCore {
 // Add this to the existing FinanceCore class
 
 public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r: number, sigma: number): number {
+validateInput({ S, K, T, r, sigma }, {
+  S: { required: true, positive: true },
+  K: { required: true, positive: true },
+  T: { required: true, positive: true },
+  r: { required: true },
+  sigma: { required: true, positive: true }
+});
   const d1 = (Math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * Math.sqrt(T));
   const d2 = d1 - sigma * Math.sqrt(T);
 
@@ -49,6 +56,10 @@ public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r:
 }
 
 public analyzeFinancials(income: any, balance: any) {
+validateInput({ income, balance }, {
+  income: { required: true },
+  balance: { required: true }
+});
   const revenue = income.revenue || 0;
   const netIncome = income.netIncome || 0;
   const assets = balance.assets || 0;
