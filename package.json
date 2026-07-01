@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Pure logic financial and real estate calculation APIs",
   "scripts": {
-  "build": "tsc",
-  "serve": "netlify dev",
-  "lint": "eslint src netlify --ext .ts",
-  "lint:fix": "eslint src netlify --ext .ts --fix",
-  "format": "prettier --write \"src/**/*.ts\" \"netlify/**/*.ts\""
+    "build": "tsc",
+    "serve": "netlify dev",
+    "lint": "eslint src netlify --ext .ts",
+    "lint:fix": "eslint src netlify --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"netlify/**/*.ts\""
   },
   "dependencies": {
     "date-fns": "^4.4.0",
