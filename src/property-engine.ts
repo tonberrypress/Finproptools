@@ -12,7 +12,7 @@ export interface PropertyInput {
 
 export class PropertyEngine {
   public incomeApproachValuation(noi: number, capRate: number): number {
-validateInput({ noi, capRate }, {
+ validateInput({ noi, capRate }, {
   noi: { required: true, positive: true },
   capRate: { required: true, positive: true }
 });
@@ -20,7 +20,7 @@ validateInput({ noi, capRate }, {
   }
 
   public dcfValuation(input: PropertyInput): any {
-validateInput(input, {
+ validateInput(input, {
   noi: { required: true, positive: true },
   holdingPeriod: { required: true, positive: true }
 });
@@ -44,7 +44,7 @@ validateInput(input, {
   }
 
 public calculateRealEstateReturn(input: any) {
-validateInput(input, {
+ validateInput(input, {
   purchasePrice: { required: true, positive: true },
   holdingPeriod: { required: true, positive: true },
   annualNOI: { required: true, positive: true }
@@ -74,7 +74,7 @@ validateInput(input, {
 }
 
 public developmentFeasibility(input: any) {
-validateInput(input, {
+ validateInput(input, {
   landCost: { required: true, positive: true },
   constructionCost: { required: true, positive: true },
   totalUnits: { required: true, positive: true },
@@ -102,7 +102,7 @@ validateInput(input, {
 }
 
 public leaseEconomics(input: any) {
-validateInput(input, {
+ validateInput(input, {
   monthlyRent: { required: true, positive: true },
   termMonths: { required: true, positive: true }
 });
@@ -131,7 +131,7 @@ validateInput(input, {
 }
 
 public portfolioMetrics(properties: any[]) {
-validateInput({ properties }, {
+ validateInput({ properties }, {
   properties: { required: true }
 });
   if (!properties || properties.length === 0) {
