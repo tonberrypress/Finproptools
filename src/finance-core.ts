@@ -12,7 +12,7 @@ export class FinanceCore {
     validateInput({ rate, cashFlows }, {
       rate: { required: true },
       cashFlows: { required: true }
-  });
+    });
     let npv = 0;
     for (const cf of cashFlows) {
       npv += cf.amount / Math.pow(1 + rate, cf.period);
@@ -24,7 +24,7 @@ export class FinanceCore {
   public calculateIRR(cashFlows: number[]): number {
     validateInput({ cashFlows }, {
       cashFlows: { required: true }
-  });
+    });
     // Basic implementation - can be improved with better solver
     let rate = 0.1;
     for (let i = 0; i < 50; i++) {
@@ -46,7 +46,7 @@ export class FinanceCore {
       T: { required: true, positive: true },
       r: { required: true },
       sigma: { required: true, positive: true }
-  });
+    });
   const d1 = (Math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * Math.sqrt(T));
   const d2 = d1 - sigma * Math.sqrt(T);
 
@@ -66,7 +66,7 @@ export class FinanceCore {
     validateInput({ income, balance }, {
       income: { required: true },
       balance: { required: true }
-  });
+    });
   const revenue = income.revenue || 0;
   const netIncome = income.netIncome || 0;
   const assets = balance.assets || 0;
@@ -89,7 +89,7 @@ export class FinanceCore {
       salvage: { required: true },
       usefulLife: { required: true, positive: true },
       year: { required: true, positive: true }
-   });
+     });
   const annualDep = (cost - salvage) / usefulLife;
   return round(annualDep, 2);
 }
@@ -97,7 +97,7 @@ export class FinanceCore {
   public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: number}> = [] ): number {
     validateInput({ taxableIncome }, {
       taxableIncome: { required: true }
-  });
+    });
   // Default progressive brackets (US-style example - customizable)
   const defaultBrackets = [
     { min: 0, rate: 0.10 },
@@ -125,7 +125,7 @@ export class FinanceCore {
       currentValue: { required: true },
       growthRate: { required: true },
       periods: { required: true, positive: true }
-  });
+    });
   const adjustedRate = scenario === 'best' ? growthRate * 1.2 : 
                        scenario === 'worst' ? growthRate * 0.8 : growthRate;
 
