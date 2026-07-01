@@ -107,6 +107,9 @@ public leaseEconomics(input: any) {
 }
 
 public portfolioMetrics(properties: any[]) {
+validateInput({ properties }, {
+  properties: { required: true }
+});
   if (!properties || properties.length === 0) {
     return { error: "No properties provided" };
   }
