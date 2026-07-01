@@ -30,7 +30,7 @@ export interface LoanSummary {
   totalPayments: number;
   totalInterest: number;
   payoffDate: string;
-  totalExtraPaid: number; to 
+  totalExtraPaid: number;
   amortizationSchedule: AmortizationRow[];
 }
   
