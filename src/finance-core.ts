@@ -40,8 +40,8 @@ export class FinanceCore {
 
 // Add this to the existing FinanceCore class
 
-public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r: number, sigma: number): number {
- validateInput({ S, K, T, r, sigma }, {
+  public blackScholes(callPut: 'call' | 'put', S: number, K: number, T: number, r: number, sigma: number): number {
+    validateInput({ S, K, T, r, sigma }, {
   S: { required: true, positive: true },
   K: { required: true, positive: true },
   T: { required: true, positive: true },
