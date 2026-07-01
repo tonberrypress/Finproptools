@@ -1,4 +1,4 @@
-import { round } from 'lodash';
+limport { round } from 'lodash';
 
 export interface CashFlow {
   amount: number;
@@ -71,6 +71,9 @@ public straightLineDepreciation(cost: number, salvage: number, usefulLife: numbe
 }
 
 public calculateTax( taxableIncome: number, brackets: Array<{min: number, rate: number}> = [] ): number {
+validateInput({ taxableIncome }, {
+  taxableIncome: { required: true }
+});
   // Default progressive brackets (US-style example - customizable)
   const defaultBrackets = [
     { min: 0, rate: 0.10 },
