@@ -52,12 +52,12 @@ export class LoanEngine {
     annualInterestRate: { required: true }
   });
     const {
-    principal,
-    annualInterestRate,
-    termMonths,
-    startDate = new Date().toISOString(),
-    extraPayment = 0,
-    paymentFrequency = 'monthly'
+      principal,
+      annualInterestRate,
+      termMonths,
+      startDate = new Date().toISOString(),
+      extraPayment = 0,
+      paymentFrequency = 'monthly'
   } = input;
 
 
