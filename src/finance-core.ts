@@ -1,4 +1,5 @@
-limport { round } from 'lodash';
+import { validateInput } from './validator';
+import { round } from 'lodash';
 
 export interface CashFlow {
   amount: number;
