@@ -45,7 +45,7 @@ export class LoanEngine {
     return principal * (monthlyRate * x) / (x - 1);
   }
 
-public calculateLoan(input: LoanInput): LoanSummary {
+  public calculateLoan(input: LoanInput): LoanSummary {
   validateInput(input, {
     principal: { required: true, positive: true },
     termMonths: { required: true, positive: true },
