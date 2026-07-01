@@ -17,6 +17,9 @@ export class FinanceCore {
 
   // Internal Rate of Return (simple approximation)
   public calculateIRR(cashFlows: number[]): number {
+validateInput({ cashFlows }, {
+  cashFlows: { required: true }
+});
     // Basic implementation - can be improved with better solver
     let rate = 0.1;
     for (let i = 0; i < 50; i++) {
