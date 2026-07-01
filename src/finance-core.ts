@@ -22,7 +22,7 @@ export class FinanceCore {
 
   // Internal Rate of Return (simple approximation)
   public calculateIRR(cashFlows: number[]): number {
- validateInput({ cashFlows }, {
+    validateInput({ cashFlows }, {
   cashFlows: { required: true }
 });
     // Basic implementation - can be improved with better solver
